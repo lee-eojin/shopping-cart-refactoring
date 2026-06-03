@@ -1,10 +1,8 @@
-import './App.css'
-import ProductSection from './components/ProductSection'
+import "./App.css";
+import ProductSection from "./components/ProductSection";
 
 function App() {
-  return (
-    <ProductSection />
-  )
+  return <ProductSection />;
 }
 
-export default App
+export default App;
