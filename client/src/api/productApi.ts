@@ -1,3 +1,5 @@
+import type { Product } from "../types/product";
+
 export const requestGetProducts = async () => {
   const response = await fetch("/products", {
     method: "GET",
@@ -5,18 +7,15 @@ export const requestGetProducts = async () => {
   return response.json();
 };
 
-export const requestAddProdroduct = async ({ name, price }: { name: string; price: number }) => {
+export const requestAddProduct = async ({ name, price }: Omit<Product, "id">) => {
   const response = await fetch("/products", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, price }),
   });
-
   return response.json();
 };
 
-export const requestDeleteProdroduct = async (id: number) => {
-  const response = await fetch(`/products/${id}`, { method: "DELETE" });
-  return response.json();
+export const requestDeleteProduct = async (id: number) => {
+  await fetch(`/products/${id}`, { method: "DELETE" });
 };
-

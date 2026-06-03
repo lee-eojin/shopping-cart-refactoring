@@ -1,5 +1,5 @@
 import './App.css'
-import ProductSection from './ProductSection'
+import ProductSection from './components/ProductSection'
 
 function App() {
   return (

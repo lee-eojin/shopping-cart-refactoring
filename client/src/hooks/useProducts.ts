@@ -1,12 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
-import { validateProduct } from "./validateProduct";
-import { requestGetProducts, requestAddProdroduct, requestDeleteProdroduct } from "./productApi";
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-}
+import type { Product } from "../types/product";
+import { validateProduct } from "../utils/validateProduct";
+import { requestGetProducts, requestAddProduct, requestDeleteProduct } from "../api/productApi";
 
 export default function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -27,7 +22,7 @@ export default function useProducts() {
           return;
         }
       }
-      await requestAddProdroduct({ name, price });
+      await requestAddProduct({ name, price });
       fetcher();
     },
     [fetcher],
@@ -35,7 +30,7 @@ export default function useProducts() {
 
   const deleteProduct = useCallback(
     async (id: number) => {
-      await requestDeleteProdroduct(id);
+      await requestDeleteProduct(id);
       fetcher();
     },
     [fetcher],

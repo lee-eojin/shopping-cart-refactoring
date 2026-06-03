@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useProducts from "./useProducts";
+import useProducts from "../hooks/useProducts";
 
 export default function ProductSection() {
   const { products, addProduct, deleteProduct, error } = useProducts();
